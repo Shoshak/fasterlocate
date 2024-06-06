@@ -17,8 +17,7 @@ import java.util.Optional;
 public abstract class ChunkGeneratorMixin {
     @Inject(at = @At("HEAD"), method = "findNearestMapStructure", cancellable = true)
     private void locateButFaster(TagKey<Structure> structure, BlockPos pos, int p_215014_, boolean p_215015_, CallbackInfoReturnable<BlockPos> cir) {
-        if (pos.getX() < 50000 && pos.getZ() < 50000 && pos.getX() > -50000 && pos.getZ() > -50000
-                && structure.equals(StructureTags.ON_TREASURE_MAPS)) {
+        if (structure.equals(StructureTags.ON_TREASURE_MAPS)) {
             Optional<BlockPos> foundPosition = Fasterlocate.getTreasureLocation(pos);
             foundPosition.ifPresent(cir::setReturnValue);
         }
