@@ -41,10 +41,10 @@ public class Fasterlocate {
             String[] xz = answer.split(" ");
             return Optional.of(new BlockPos(Integer.parseInt(xz[0]), 64, Integer.parseInt(xz[1])));
         } catch (IOException e) {
-            LOGGER.error("Could not read a.out");
+            LOGGER.error("Could not read input stream");
             return Optional.empty();
         } catch (InterruptedException e) {
-            LOGGER.error("Interrupted a.out");
+            LOGGER.error("Interrupted input stream");
             return Optional.empty();
         }
     }
